@@ -1,6 +1,9 @@
 import React from 'react';
 import { Moon, Clock, Book, Calculator, Calendar, Utensils } from 'lucide-react';
 import PageHeader from '../components/PageHeader';
+import RamadanCountdown from '../components/RamadanCountdown';
+import IslamicCalendar from '../components/IslamicCalendar';
+import TasbihCounter from '../components/TasbihCounter';
 import ContentCard from '../components/ContentCard';
 
 function Ramadan() {
@@ -18,74 +21,34 @@ function Ramadan() {
   ];
 
   return (
-    <div className="max-w-7xl mx-auto">
+    <div className="max-w-7xl mx-auto px-4 pb-20 lg:pb-6">
       <PageHeader
         icon={Moon}
         title="Ramadan"
         description="Your complete companion for the blessed month"
       />
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <div className="lg:col-span-2 space-y-6">
-          <ContentCard title="Daily Schedule">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {schedule.map(({ meal, time }) => (
-                <div key={meal} className="bg-background-secondary p-4 rounded-lg text-center">
-                  <h4 className="font-semibold mb-1">{meal}</h4>
-                  <p className="text-accent-primary">{time}</p>
-                </div>
-              ))}
-            </div>
-          </ContentCard>
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-6">
+        <RamadanCountdown />
 
-          <ContentCard title="Ramadan Goals">
-            <div className="space-y-4">
-              {goals.map(({ title, target, progress }) => (
-                <div key={title} className="p-4 bg-background-secondary rounded-lg">
-                  <div className="flex justify-between mb-2">
-                    <h4 className="font-semibold">{title}</h4>
-                    <span className="text-sm text-accent-primary">{target}</span>
-                  </div>
-                  <div className="h-2 bg-gray-200 rounded-full">
-                    <div
-                      className="h-full bg-accent-primary rounded-full"
-                      style={{ width: `${progress}%` }}
-                    />
-                  </div>
-                </div>
-              ))}
-            </div>
-          </ContentCard>
+        <div className="lg:col-span-2">
+          <IslamicCalendar />
         </div>
 
         <div className="space-y-6">
-          <ContentCard title="Zakat Calculator">
-            <div className="space-y-4">
-              <div>
-                <label className="block text-sm font-medium text-text-body mb-1">
-                  Total Savings (USD)
-                </label>
-                <input
-                  type="number"
-                  className="w-full px-4 py-2 rounded-lg border border-gray-200 focus:border-accent-primary focus:ring-2 focus:ring-accent-primary focus:ring-opacity-50"
-                />
-              </div>
-              <button className="btn w-full">Calculate Zakat</button>
-            </div>
-          </ContentCard>
+          <TasbihCounter />
 
-          <ContentCard title="Iftar Planning">
-            <div className="space-y-4">
-              <div className="flex items-center gap-4">
-                <Utensils className="text-accent-primary" size={24} />
-                <div>
-                  <h4 className="font-semibold">Today's Menu</h4>
-                  <p className="text-sm text-text-body">Plan your iftar meal</p>
+          <div className="bg-white rounded-2xl shadow-elevated p-6">
+            <h3 className="text-lg font-semibold mb-4">Daily Schedule</h3>
+            <div className="space-y-3">
+              {schedule.map(({ meal, time }) => (
+                <div key={meal} className="flex justify-between items-center p-3 bg-pearl-50 rounded-xl">
+                  <span className="font-medium">{meal}</span>
+                  <span className="text-primary-600">{time}</span>
                 </div>
-              </div>
-              <button className="btn w-full">Add Menu Item</button>
+              ))}
             </div>
-          </ContentCard>
+          </div>
         </div>
       </div>
     </div>
