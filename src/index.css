@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-background-primary text-text-body;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply text-text-heading font-semibold;
+  }
+}
+
+@layer components {
+  .nav-link {
+    @apply flex items-center gap-2 px-4 py-2 rounded-md text-text-body hover:bg-background-secondary hover:text-accent-primary transition-all duration-200;
+  }
+
+  .nav-link.active {
+    @apply bg-background-secondary text-accent-primary;
+  }
+
+  .card {
+    @apply bg-white rounded-lg shadow-card p-6 hover:shadow-lg transition-all duration-200 hover:scale-[1.02];
+  }
+
+  .btn {
+    @apply px-4 py-2 rounded-md bg-accent-primary text-white hover:bg-accent-secondary transition-all duration-200 focus:ring-2 focus:ring-accent-primary focus:ring-opacity-50;
+  }
+}
